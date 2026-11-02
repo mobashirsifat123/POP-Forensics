@@ -17,3 +17,7 @@ Sources were read over SSH from the main SICA/OpenMMSec project on `pro6000`. Th
 Exact source hashes and byte sizes are in [source_adaptation.json](source_adaptation.json). These are adaptation provenance, not claims that the historical experiment is reproducible or that all recovered files match earlier execution bytes. The original historical POP validator, 58-scope matrix and archive catalog remain unavailable. None was fabricated or reconstructed.
 
 New glue includes the producer CLI, native SICA converters, safe output helpers, cache publication, fault tests and a CPU image/training/reconstruction integration example. The old verifier CLI and decision semantics are preserved. These producer tools collect/compare evidence; they do not automatically establish complete training coverage or scientific validity.
+
+## Additional paper-specific entry points
+
+The original controlled conformance benchmark and historical prediction/optimizer-log verification scripts from the local paper collection are included under `scripts/historical/`. They were formatted and changed to require explicit input/output locations; hard-coded lab path substitution is now an opt-in pair of prefix arguments. They retain original research computations and read only user-supplied historical exports. Their original SHA-256 hashes are recorded in `historical_analysis_sources` in [source_adaptation.json](source_adaptation.json). See [historical analysis](historical_analysis.md).

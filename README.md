@@ -26,6 +26,10 @@ python -m popverify.producers.cli --help
 
 [Run the complete CPU image/training/reconstruction example](examples/evidence_pipeline/README.md) in an existing PyTorch environment. These producers are separately invoked; the original verifier CLI and decision rules are unchanged. They do not recover missing historical artifacts or automatically establish trustworthy coverage.
 
+## Paper-specific analysis scripts
+
+The [historical analysis scripts](docs/historical_analysis.md) include the original NumPy conformance experiment, saved-prediction rescoring and nine-run optimizer-log verification. The conformance experiment runs on synthetic data; the historical checks require the retained research exports, which are not published here. Install their optional dependencies with `python -m pip install -e '.[historical]'`.
+
 ## Evidence dimensions
 
 | Gate | Questions | Implemented checks |
