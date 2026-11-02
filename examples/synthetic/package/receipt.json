@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "implementation": "popverify-reference-0.1.0",
+  "implementation": "popverify-reference-0.1.1",
   "scope": "synthetic feature-count comparison",
   "outcome": "PASS",
   "gates": {

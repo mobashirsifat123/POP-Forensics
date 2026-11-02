@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite the software and associated manuscript when using POP."
 type: software
 title: "POP-Forensics: Population, Objective, and Provenance Verification"
-version: 0.1.0
+version: 0.1.1
 license: MIT
 url: "https://github.com/mobashirsifat123/POP-Forensics"
 repository-code: "https://github.com/mobashirsifat123/POP-Forensics"

@@ -22,3 +22,7 @@ The clean-wheel full suite passed from outside the checkout. [GitHub Actions run
 No failing or skipped local tests were retained in this report. Initial environment setup briefly ran tests before installation finished; rerunning after installation succeeded. No real-world detector effectiveness, historical-scope reproduction, blinded audit, scalability or comparative product test is claimed.
 
 Reproduce with the commands in the README. Tests use unittest and temporary directories; synthetic registration and evidence are independently varied to exercise contradictions and gaps. Cases are dependent author-designed fixtures, so their agreement is not an independent sensitivity estimate.
+
+## Packaging patch 0.1.1
+
+The initial source archive omitted examples/documentation under setuptools defaults. Version 0.1.1 adds MANIFEST.in so the source distribution contains the synthetic generator/package, docs, configuration guidance, tests, citation and contributor metadata. The extracted source archive's full suite and freshly generated example pass in a separate environment. CI now repeats extracted-source tests after wheel installation. Scientific checks and outcome semantics are unchanged.

@@ -64,7 +64,7 @@ def verify(registration, evidence):
         )
     return {
         "schema_version": 1,
-        "implementation": "popverify-reference-0.1.0",
+        "implementation": "popverify-reference-0.1.1",
         "scope": reg["scope"],
         "outcome": reduce_outcomes(r["outcome"] for r in results),
         "gates": {
