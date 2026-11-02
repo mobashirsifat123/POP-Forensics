@@ -33,3 +33,11 @@ Known boundary SR-02 (informational): artifacts may change while verification ru
 Known boundary SR-03 (scientific trust): producer summaries and booleans are not independently measured by POP. Truthfulness, completeness and preregistration require external process controls. The documentation makes this explicit.
 
 The reproducible `python scripts/audit_release.py` scan checks indexed text files for selected token/private-key patterns, private absolute paths, binaries, symlinks and oversized files. A clean scan is a bounded check, not proof that all possible secrets or ownership issues have been detected. Inspect `git diff --cached` before each publication.
+
+## Evidence-producer branch audit (2026-11-02)
+
+The maintainer explicitly authorized publishing their original audit scripts/adaptations under MIT. Adapted code is traced to seven inspected source-file hashes in `source_adaptation.json`. Third-party SICA/ForensicHub implementation, private image paths, images, prediction exports and weights remain excluded. Only newly generated synthetic inputs are used by the added example/tests. No legacy checkpoint deserialization was imported.
+
+New boundaries: optional Pillow decoding, local file hashing/copying and caller-attached optimizer hooks. Image paths are confined to a declared dataset root; portable outputs can omit private paths. Cooperative cache publication uses a sibling lock and same-filesystem directory rename. No claim of hostile concurrent-filesystem protection is made. Producer JSON outputs refuse overwrites. The original `popverify` CLI and decision semantics are unchanged.
+
+Review `docs/evidence_producers.md`, `docs/source_adaptation.md` and `docs/producer_test_report.md` before interpreting producer observations. No historical validator, matrix or catalog was recovered. The evidence-producers branch is independent of the visual redesign and does not merge it or create a new release.

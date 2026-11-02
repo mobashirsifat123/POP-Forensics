@@ -30,3 +30,16 @@ jobs:
       - run: python examples/synthetic/generate.py output/ci
       - run: popverify verify output/ci/registration.json output/ci/evidence.json --json
       - run: popverify verify examples/synthetic/package/registration.json examples/synthetic/package/evidence.json --json
+
+  producer-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[images]'
+      - run: python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m unittest discover -s tests -v
+      - run: python examples/evidence_pipeline/run.py output/image-pipeline
+      - run: popverify verify output/image-pipeline/registration.json output/image-pipeline/evidence.json --json

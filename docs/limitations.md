@@ -9,3 +9,7 @@
 - Metrics do not implement cluster bootstrap, seed confidence intervals, source-family dependence or automatic identity joins. Constant/tie-aware AUC is supported; missing classes/cells are errors.
 - Registrations can be poorly chosen. PASS certifies supplied registered assertions, not scientific truth, generalizability or architectural attribution beyond those assertions.
 - JSON vectors and manifests are loaded into memory. Very large studies should export bounded per-cohort scopes or develop a tested streaming adapter. Resource quotas and hostile-filesystem race protection are outside this release.
+
+## Evidence-producer branch scope
+
+The separately invoked producer tools now support strict Pillow image census, native SICA manifest/CSV conversion, explicit cohort exclusions, live optimizer hooks, parameter snapshots, retained-log summaries, cache publication/inspection and external prediction comparison. This extends the original v0.1.1 scope described above without adding detector/model loading to the verifier. Producers still require trustworthy coverage, explicit registration and independent reconstruction; no historical validator or scope matrix was recovered. See [producer guide](evidence_producers.md) for costs and boundaries.
