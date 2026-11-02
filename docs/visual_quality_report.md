@@ -8,7 +8,7 @@ Branch: `visual-documentation-refresh`. Reviewed 2026-11-02 with Chromium throug
 |---|---|---|
 | GitHub README | PASS | Actual branch page rendered in Chromium; banner, five diagrams and all four badges loaded with nonzero image dimensions |
 | Documentation build | PASS | MkDocs 1.6.1 / Material 9.8.0, `mkdocs build --strict` |
-| Built-site links/images/anchors | PASS | 26 HTML pages, 1,254 local targets plus repository-relative README assets checked by `scripts/check_documentation.py` |
+| Built-site links/images/anchors | PASS | 26 HTML pages, 1,263 local targets plus repository-relative README assets checked by `scripts/check_documentation.py` |
 | Desktop layout | PASS | 1440 × 1000 viewport; full-page homepage preview inspected |
 | Mobile layout | PASS | 390 × 844 viewport; document width 390, no broken homepage images; navigation drawer opens |
 | Search | PASS | Query `reconstruction` returns relevant indexed documentation |
