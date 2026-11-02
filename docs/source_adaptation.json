@@ -1,0 +1,60 @@
+{
+  "retrieved": "2026-11-02",
+  "source_host_alias": "pro6000",
+  "authorization": "Maintainer confirmed permission to publish original scripts and adaptations under MIT; third-party code/data/weights excluded.",
+  "source_files": [
+    {
+      "source": "paper_submission_audit_20261019/execution/phase1_cpu.py",
+      "sha256": "acc511aabe1e18742b414d83a69ef5670be1dccf8f6a146807bfd02fd2399368",
+      "bytes": 10452
+    },
+    {
+      "source": "paper_submission_audit_20261019/execution/add_numeric_counters.py",
+      "sha256": "6027fceeb352eb73d11f2ceea87d052bc9aeb4314c7a2058e57abc6e27f07596",
+      "bytes": 4163
+    },
+    {
+      "source": "paper_submission_audit_20261019/execution/fingerprint_cached_inputs.py",
+      "sha256": "a318f6b8173896ca0a853cf5888dc5946274774dfb1ef1f688af128d87acdcef",
+      "bytes": 1893
+    },
+    {
+      "source": "paper_submission_audit_20261019/execution/score_cohorts.py",
+      "sha256": "c4800dae081bddb78ed9ea689deffcef7f9e2ff3c4ae851249e6efcd5d99b444",
+      "bytes": 10264
+    },
+    {
+      "source": "paper_submission_audit_20261019/execution/verify_training_stagnation.py",
+      "sha256": "c180ad307d6ef5acc9c481243f43b14b336a84f6dcfbf189f67cda5cbf9451a8",
+      "bytes": 1850
+    },
+    {
+      "source": "paper_submission_audit_20261019/scripts/analyze_existing.py",
+      "sha256": "2ce3be5f96383eadcdf18552286e2b2b1452ae977d6bcfc351a3f930fde61224",
+      "bytes": 19753
+    },
+    {
+      "source": "Strarting_case_for_ForensicHub_by_SICA/scripts/aggregate_sica_metrics.py",
+      "sha256": "d2dedd3419df6721fc073cafe960a4f9f985bb64a1e16cfa74dde4fa58fb66ce",
+      "bytes": 5732
+    }
+  ],
+  "scope": "Source adaptation provenance only. No historical predictions, datasets, weights or missing validator artifacts distributed.",
+  "historical_analysis_sources": [
+    {
+      "source": "code/controlled_benchmark.py",
+      "sha256": "d7a31be29fe6a66e7b136d87a88a6edeac5bd5a5c01201de35b8f86b69d3a0d2",
+      "bytes": 9154
+    },
+    {
+      "source": "code/rescore_historical.py",
+      "sha256": "256ee19b2dec31780eb94e8a246b6da7f29af7b64a89ce7d04c68cd2a4ddfb86",
+      "bytes": 5953
+    },
+    {
+      "source": "code/verify_historical_updates.py",
+      "sha256": "544dca05f5276204f36a2e2b9ee8afea9f7bda5bd617ba38d2f38ccddcbdc7a9",
+      "bytes": 1474
+    }
+  ]
+}

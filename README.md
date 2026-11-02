@@ -8,6 +8,28 @@ Small AUC differences can change sign when manipulation types receive different 
 
 This repository provides a **new reference implementation** of the documented protocol. It is research verification software, not a detection model or a benchmark. It complements experiment trackers and frameworks such as ForensicHub.
 
+## Evidence producers adapted from the SICA audit
+
+The repository now includes [working evidence-generation tools](docs/evidence_producers.md) adapted from the maintainer's original project on `pro6000`, with [source-file hashes and attribution](docs/source_adaptation.md):
+
+- Native SICA manifest/CSV conversion with stable IDs and private-path removal from exported scores.
+- Strict image byte/RGB census and exact-content-excluded cohorts.
+- Fixed-cohort paired rescoring under all three AUC estimands.
+- Live optimizer post-step tracking, target diagnostics and trainable-parameter deltas.
+- Original DE3 JSONL training-log summaries with explicit missing coverage.
+- Atomic cache publication, committed-byte inspection and mixed reconstruction diagnostics.
+
+```sh
+python -m pip install -e '.[images]'
+python -m popverify.producers.cli --help
+```
+
+[Run the complete CPU image/training/reconstruction example](examples/evidence_pipeline/README.md) in an existing PyTorch environment. These producers are separately invoked; the original verifier CLI and decision rules are unchanged. They do not recover missing historical artifacts or automatically establish trustworthy coverage.
+
+## Paper-specific analysis scripts
+
+The [historical analysis scripts](docs/historical_analysis.md) include the original NumPy conformance experiment, saved-prediction rescoring and nine-run optimizer-log verification. The conformance experiment runs on synthetic data; the historical checks require the retained research exports, which are not published here. Install their optional dependencies with `python -m pip install -e '.[historical]'`.
+
 ## Evidence dimensions
 
 | Gate | Questions | Implemented checks |
@@ -82,7 +104,7 @@ All assertions in version 1 are required. Missing or malformed evidence is never
 4. Export evidence in the documented JSON schema and run `popverify verify`.
 5. Share the registration, evidence, artifacts, receipt and limitations under suitable permissions.
 
-See [the SICA/ForensicHub integration guide](examples/sica_forensichub/README.md). This release supplies an export contract, not a plug-in trainer or automatic forensic-model adapter.
+See [the SICA/ForensicHub integration guide](examples/sica_forensichub/README.md). The native manifest/CSV adapters and producer utilities support evidence export; no detector trainer or automatic forensic inference adapter is bundled.
 
 ## Repository
 

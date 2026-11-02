@@ -32,3 +32,7 @@ Inspected at the recorded external commit; that repository was only read and rem
 ## Licensing boundary
 
 Only newly developed reference code, new prose and newly generated synthetic values are MIT licensed here. No permission to relicense any existing research source, manuscript assets, dataset exports or upstream implementation is inferred. See [reference review](reference_review.md) for observed upstream license signals and commits. Components with uncertain redistribution rights are excluded, so publication does not depend on resolving those components' ownership.
+
+## Author-authorized source adaptations (2026-11-02)
+
+The original release inventory above describes v0.1.1. On the separate evidence-producers branch, the maintainer authorized MIT publication of their original audit utilities/adaptations. The new [source record](source_adaptation.md) supersedes the earlier no-import decision only for those explicitly listed author scripts. Third-party models, original SICA inference code, raw data and private exports remain excluded.
