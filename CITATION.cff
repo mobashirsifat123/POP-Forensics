@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "Please cite the software and associated manuscript when using POP."
+type: software
+title: "POP-Forensics: Population, Objective, and Provenance Verification"
+version: 0.1.0
+license: MIT
+url: "https://github.com/mobashirsifat123/POP-Forensics"
+repository-code: "https://github.com/mobashirsifat123/POP-Forensics"
+authors:
+  - family-names: Sifat
+    given-names: Md Mobashir Hossian
+preferred-citation:
+  type: manuscript
+  title: "Beyond Headline AUC: Can Reported Improvements in Unified Image Forensics Be Verified? A Retrospective Study of Spatial and Patch Adaptations"
+  year: 2026
+  notes: "WI-IAT 2026; acceptance reported by authors. Proceedings metadata and DOI not supplied."
+  authors:
+    - family-names: Sifat
+      given-names: Md Mobashir Hossian
+    - family-names: Hossen
+      given-names: Md Forhad
+    - family-names: Hoque
+      given-names: Mohammad Mesba Ul
+    - family-names: Xu
+      given-names: Xiong
+    - family-names: Peng
+      given-names: Chengzong

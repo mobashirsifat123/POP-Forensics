@@ -1,0 +1,13 @@
+# Protocol and implementation scope
+
+POP binds assertions to one comparison: fixed arms, evaluation population and estimand, optimization requirements and prediction-input provenance. Register requirements before using the comparison to support a claim. An editable JSON file alone cannot establish preregistration: retain an external timestamp or version-control commit before fitting and selection.
+
+P1 checks exact row/label/split metadata equality, content-registry disjointness after exclusions and numeric agreement with registered cell weights. For image studies run separate disjoint assertions for byte SHA-256 and decoded-RGB SHA-256. Compute decoded digests with a documented decoding convention outside this package. Perceptual-family exclusions and sensitivity cohorts must be supplied as distinct registered comparisons; the checker does not decode images or infer near-duplicate families.
+
+O checks both arms' observed target dtype and values against registered probability bounds, realized successful update budgets, skipped/nonfinite maxima, initial-parameter bytes and minimum parameter-change records. This release supports BCE-style probability-target contracts. It does not infer arbitrary loss semantics, intercept a gradient scaler, measure deltas itself or prove completeness of producer logs. Add artifact digest assertions to bind logs and checkpoints as well as their summaries.
+
+P2 checks a producer completion boolean, cache bytes against registered SHA-256 and saved versus externally reconstructed finite prediction vectors with absolute tolerance (zero relative tolerance). Publish caches via temporary files and atomic replacement, then record completion; do not infer readiness merely from file existence. The verifier never invokes model code. A consistent but dishonest producer can pass; hashes alone do not prove historical execution.
+
+`popverify.metrics` provides tie-aware rank AUC and explicit estimands using shared authentic controls within each domain. A_type averages type AUCs within domains, then domains equally; A_unif averages all types equally; A_pool averages pooled domain AUCs. Register all expected domains/types: missing cells raise an error. These helpers do not automatically validate the numeric weight record, align prediction identities, perform exclusions or compute confidence intervals. Use the same registered row order for saved and reconstructed vectors; preserve a membership/order artifact. Metric integration is producer work.
+
+The engine evaluates every assertion and emits a per-assertion reason. PASS means registered evidence requirements were satisfied. It does not establish architectural causality or comparative scientific validity beyond the registration.

@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "scope": "synthetic feature-count comparison",
+  "arms": [
+    "baseline",
+    "candidate"
+  ],
+  "assertions": [
+    {
+      "id": "membership",
+      "gate": "P1",
+      "kind": "membership",
+      "evidence": "membership",
+      "expected": {
+        "sample-0": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-1": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-2": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-3": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-4": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-5": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-6": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-7": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-8": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-9": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-10": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-11": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-12": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-13": {
+          "label": 0,
+          "split": "evaluation"
+        },
+        "sample-14": {
+          "label": 1,
+          "split": "evaluation"
+        },
+        "sample-15": {
+          "label": 1,
+          "split": "evaluation"
+        }
+      },
+      "tolerance": 0
+    },
+    {
+      "id": "content",
+      "gate": "P1",
+      "kind": "disjoint",
+      "evidence": "content",
+      "expected": true,
+      "tolerance": 0
+    },
+    {
+      "id": "weights",
+      "gate": "P1",
+      "kind": "weights",
+      "evidence": "weights",
+      "expected": {
+        "synthetic/type-1": 1.0
+      },
+      "tolerance": 0
+    },
+    {
+      "id": "complete",
+      "gate": "P2",
+      "kind": "completion",
+      "evidence": "complete",
+      "expected": true,
+      "tolerance": 0
+    },
+    {
+      "id": "cache",
+      "gate": "P2",
+      "kind": "digest",
+      "evidence": "cache",
+      "expected": "3d1102fbc94e7622c89703daf3eafd94b829b9f30b262e7e9391819f5c90173b",
+      "tolerance": 0
+    },
+    {
+      "id": "replicates",
+      "gate": "O",
+      "kind": "lineage",
+      "evidence": "replicates",
+      "expected": true,
+      "tolerance": 0
+    },
+    {
+      "id": "factors",
+      "gate": "O",
+      "kind": "attribution",
+      "evidence": "factors",
+      "expected": 1,
+      "tolerance": 0
+    },
+    {
+      "id": "baseline-targets",
+      "gate": "O",
+      "kind": "targets",
+      "evidence": "baseline-targets",
+      "expected": {
+        "dtype": "float64",
+        "min": 0,
+        "max": 1
+      },
+      "tolerance": 0,
+      "arm": "baseline"
+    },
+    {
+      "id": "baseline-updates",
+      "gate": "O",
+      "kind": "updates",
+      "evidence": "baseline-updates",
+      "expected": {
+        "successful": 40,
+        "max_skipped": 0,
+        "max_nonfinite": 0
+      },
+      "tolerance": 0,
+      "arm": "baseline"
+    },
+    {
+      "id": "baseline-delta",
+      "gate": "O",
+      "kind": "parameter_change",
+      "evidence": "baseline-delta",
+      "expected": 0.001,
+      "tolerance": 0,
+      "arm": "baseline"
+    },
+    {
+      "id": "baseline-initial",
+      "gate": "O",
+      "kind": "initialization",
+      "evidence": "baseline-initial",
+      "expected": "29b9c3fadab1679a8552d75ee81294e9beada5f985a06d43d9dbb91964f9e831",
+      "tolerance": 0,
+      "arm": "baseline"
+    },
+    {
+      "id": "baseline-reconstruction",
+      "gate": "P2",
+      "kind": "reconstruction",
+      "evidence": "baseline-reconstruction",
+      "expected": "baseline-predictions.json",
+      "tolerance": 1e-12,
+      "arm": "baseline"
+    },
+    {
+      "id": "candidate-targets",
+      "gate": "O",
+      "kind": "targets",
+      "evidence": "candidate-targets",
+      "expected": {
+        "dtype": "float64",
+        "min": 0,
+        "max": 1
+      },
+      "tolerance": 0,
+      "arm": "candidate"
+    },
+    {
+      "id": "candidate-updates",
+      "gate": "O",
+      "kind": "updates",
+      "evidence": "candidate-updates",
+      "expected": {
+        "successful": 40,
+        "max_skipped": 0,
+        "max_nonfinite": 0
+      },
+      "tolerance": 0,
+      "arm": "candidate"
+    },
+    {
+      "id": "candidate-delta",
+      "gate": "O",
+      "kind": "parameter_change",
+      "evidence": "candidate-delta",
+      "expected": 0.001,
+      "tolerance": 0,
+      "arm": "candidate"
+    },
+    {
+      "id": "candidate-initial",
+      "gate": "O",
+      "kind": "initialization",
+      "evidence": "candidate-initial",
+      "expected": "29b9c3fadab1679a8552d75ee81294e9beada5f985a06d43d9dbb91964f9e831",
+      "tolerance": 0,
+      "arm": "candidate"
+    },
+    {
+      "id": "candidate-reconstruction",
+      "gate": "P2",
+      "kind": "reconstruction",
+      "evidence": "candidate-reconstruction",
+      "expected": "candidate-predictions.json",
+      "tolerance": 1e-12,
+      "arm": "candidate"
+    }
+  ]
+}
