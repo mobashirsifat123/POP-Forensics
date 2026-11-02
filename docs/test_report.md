@@ -17,7 +17,7 @@ Local execution: 2026-11-02, macOS arm64, CPython 3.14.3; no GPU or historical m
 | Committed synthetic example | PASS | Both arms, all three gates |
 | Clean-wheel install | PASS | Separate environment; import and committed-example verification from outside checkout |
 
-A clean-wheel installation and public GitHub Actions status are checked during publication. Current remote CI is available in the repository Actions tab; its results, rather than declared matrix targets, determine hosted compatibility. The workflow targets Python 3.10, 3.12 and 3.14 on Linux. Source tests run before build; wheel smoke tests then verify generated and committed packages.
+The clean-wheel full suite passed from outside the checkout. [GitHub Actions run 41427565932](https://github.com/mobashirsifat123/POP-Forensics/actions/runs/41427565932) passed on Linux for Python 3.10, 3.12 and 3.14 at implementation commit `7dc917c274fe3c7002afdf00d9f40039b0bce6b4`. Current remote CI is available in the repository Actions tab; its results, rather than declared matrix targets, determine hosted compatibility. The workflow targets Python 3.10, 3.12 and 3.14 on Linux. Source tests run before build; wheel smoke tests then verify generated and committed packages.
 
 No failing or skipped local tests were retained in this report. Initial environment setup briefly ran tests before installation finished; rerunning after installation succeeded. No real-world detector effectiveness, historical-scope reproduction, blinded audit, scalability or comparative product test is claimed.
 

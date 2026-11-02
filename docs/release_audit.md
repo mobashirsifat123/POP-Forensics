@@ -18,6 +18,8 @@ Reviewed 2026-11-02 before the initial software push. Publication scope is newly
 | CI permissions | Read-only contents; no deployment credentials or publish job |
 | Publication | Existing user-created public POP-Forensics repository used; SICA reproduction repository unchanged |
 
+Public tree verification confirmed all 46 indexed file blobs match the published implementation commit `7dc917c274fe3c7002afdf00d9f40039b0bce6b4`. The bounded scan returned zero findings. Hosted CPU tests passed on all three declared Python versions. The SICA reproduction repository was accessed read-only.
+
 ## Security review
 
 The Security Best Practices skill was consulted. Its reference catalog contains framework-specific Python web guidance but no applicable standard-library CLI guide. Review therefore covers this package's actual filesystem and JSON boundaries; it is not an external penetration test or formal security certification.
