@@ -1,0 +1,18 @@
+FAIL | synthetic feature-count comparison
+  P1 membership: PASS — row membership and registered metadata
+  P1 content: PASS — content exclusion
+  P1 weights: PASS — estimand weights
+  P2 complete: PASS — producer cache-completion record
+  P2 cache: PASS — artifact SHA-256
+  O replicates: PASS — distinct replicate identities
+  O factors: PASS — single registered changed factor
+  O baseline-targets: PASS — BCE targets
+  O baseline-updates: PASS — realized optimizer updates
+  O baseline-delta: FAIL — minimum parameter L2 change
+  O baseline-initial: PASS — artifact SHA-256
+  P2 baseline-reconstruction: PASS — prediction reconstruction
+  O candidate-targets: PASS — BCE targets
+  O candidate-updates: PASS — realized optimizer updates
+  O candidate-delta: PASS — minimum parameter L2 change
+  O candidate-initial: PASS — artifact SHA-256
+  P2 candidate-reconstruction: PASS — prediction reconstruction

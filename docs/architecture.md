@@ -1,5 +1,9 @@
 # Architecture
 
+<div class="pop-figure" markdown>
+![Actual POP module architecture; metric helpers are separate from evidence verification.](assets/diagrams/architecture.svg)
+</div>
+
 The package uses small modules instead of an extensible training framework:
 
 | Module | Responsibility |

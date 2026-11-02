@@ -1,5 +1,9 @@
 # Protocol and implementation scope
 
+<div class="pop-figure" markdown>
+![The POP evidence chain from registered comparison to inspectable receipt.](assets/diagrams/overview.svg)
+</div>
+
 POP binds assertions to one comparison: fixed arms, evaluation population and estimand, optimization requirements and prediction-input provenance. Register requirements before using the comparison to support a claim. An editable JSON file alone cannot establish preregistration: retain an external timestamp or version-control commit before fitting and selection.
 
 P1 checks exact row/label/split metadata equality, content-registry disjointness after exclusions and numeric agreement with registered cell weights. For image studies run separate disjoint assertions for byte SHA-256 and decoded-RGB SHA-256. Compute decoded digests with a documented decoding convention outside this package. Perceptual-family exclusions and sensitivity cohorts must be supplied as distinct registered comparisons; the checker does not decode images or infer near-duplicate families.

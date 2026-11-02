@@ -1,7 +1,8 @@
-include CITATION.cff CONTRIBUTING.md requirements.txt
-recursive-include docs *.md
+include CITATION.cff CONTRIBUTING.md requirements.txt requirements-docs.txt mkdocs.yml
+recursive-include docs *.md *.svg *.css *.html *.py *.json *.txt
 recursive-include configs *.md
 recursive-include examples *.py *.json *.md
 recursive-include tests *.py
 recursive-include scripts *.py
 recursive-include .github *.yml
+recursive-include overrides *.html

@@ -1,5 +1,9 @@
 # Decisions
 
+<div class="pop-figure" markdown>
+![Contradiction-first priority: FAIL, otherwise UNRESOLVED, otherwise PASS.](assets/diagrams/decisions.svg)
+</div>
+
 1. Evaluate every registered assertion.
 2. If any assertion is contradicted by usable evidence, return FAIL.
 3. Otherwise, if any assertion lacks sufficient usable evidence, return UNRESOLVED.

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "implementation": "popverify-reference-0.1.1",
+  "scope": "synthetic feature-count comparison",
+  "outcome": "PASS",
+  "gates": {
+    "P1": "PASS",
+    "O": "PASS",
+    "P2": "PASS"
+  },
+  "inputs": {
+    "registration": "425fa4d943f62fa9409a5110845c1a17d39d0723e156a5dee7813c7388e9dab4",
+    "evidence": "d5ff96bd2feb83bcebe4d2e820b0853d316c103b8ba32dba94afffc35d0a9719"
+  },
+  "artifacts": {
+    "cache.json": "3d1102fbc94e7622c89703daf3eafd94b829b9f30b262e7e9391819f5c90173b",
+    "baseline-initial.json": "29b9c3fadab1679a8552d75ee81294e9beada5f985a06d43d9dbb91964f9e831",
+    "baseline-reconstructed.json": "1895efbeb3d813bb82aa748e22f27336da296a66ee399cb67e18eeb8bd8dc774",
+    "baseline-predictions.json": "1895efbeb3d813bb82aa748e22f27336da296a66ee399cb67e18eeb8bd8dc774",
+    "candidate-initial.json": "29b9c3fadab1679a8552d75ee81294e9beada5f985a06d43d9dbb91964f9e831",
+    "candidate-reconstructed.json": "6361640e62a539dd4040b8e1e3e8d6f635a0f7d3661d430a48415c540ca804ed",
+    "candidate-predictions.json": "6361640e62a539dd4040b8e1e3e8d6f635a0f7d3661d430a48415c540ca804ed"
+  },
+  "assertions": [
+    {
+      "id": "membership",
+      "gate": "P1",
+      "kind": "membership",
+      "outcome": "PASS",
+      "reason": "row membership and registered metadata"
+    },
+    {
+      "id": "content",
+      "gate": "P1",
+      "kind": "disjoint",
+      "outcome": "PASS",
+      "reason": "content exclusion"
+    },
+    {
+      "id": "weights",
+      "gate": "P1",
+      "kind": "weights",
+      "outcome": "PASS",
+      "reason": "estimand weights"
+    },
+    {
+      "id": "complete",
+      "gate": "P2",
+      "kind": "completion",
+      "outcome": "PASS",
+      "reason": "producer cache-completion record"
+    },
+    {
+      "id": "cache",
+      "gate": "P2",
+      "kind": "digest",
+      "outcome": "PASS",
+      "reason": "artifact SHA-256"
+    },
+    {
+      "id": "replicates",
+      "gate": "O",
+      "kind": "lineage",
+      "outcome": "PASS",
+      "reason": "distinct replicate identities"
+    },
+    {
+      "id": "factors",
+      "gate": "O",
+      "kind": "attribution",
+      "outcome": "PASS",
+      "reason": "single registered changed factor"
+    },
+    {
+      "id": "baseline-targets",
+      "gate": "O",
+      "kind": "targets",
+      "outcome": "PASS",
+      "reason": "BCE targets"
+    },
+    {
+      "id": "baseline-updates",
+      "gate": "O",
+      "kind": "updates",
+      "outcome": "PASS",
+      "reason": "realized optimizer updates"
+    },
+    {
+      "id": "baseline-delta",
+      "gate": "O",
+      "kind": "parameter_change",
+      "outcome": "PASS",
+      "reason": "minimum parameter L2 change"
+    },
+    {
+      "id": "baseline-initial",
+      "gate": "O",
+      "kind": "initialization",
+      "outcome": "PASS",
+      "reason": "artifact SHA-256"
+    },
+    {
+      "id": "baseline-reconstruction",
+      "gate": "P2",
+      "kind": "reconstruction",
+      "outcome": "PASS",
+      "reason": "prediction reconstruction"
+    },
+    {
+      "id": "candidate-targets",
+      "gate": "O",
+      "kind": "targets",
+      "outcome": "PASS",
+      "reason": "BCE targets"
+    },
+    {
+      "id": "candidate-updates",
+      "gate": "O",
+      "kind": "updates",
+      "outcome": "PASS",
+      "reason": "realized optimizer updates"
+    },
+    {
+      "id": "candidate-delta",
+      "gate": "O",
+      "kind": "parameter_change",
+      "outcome": "PASS",
+      "reason": "minimum parameter L2 change"
+    },
+    {
+      "id": "candidate-initial",
+      "gate": "O",
+      "kind": "initialization",
+      "outcome": "PASS",
+      "reason": "artifact SHA-256"
+    },
+    {
+      "id": "candidate-reconstruction",
+      "gate": "P2",
+      "kind": "reconstruction",
+      "outcome": "PASS",
+      "reason": "prediction reconstruction"
+    }
+  ]
+}

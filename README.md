@@ -1,37 +1,44 @@
-# POP-Forensics
+<p align="center">
+  <img src="docs/assets/brand/hero.svg" alt="POP-Forensics. Make the evidence inspectable. Population, Objective and Provenance evidence converge into one comparison receipt." width="1280">
+</p>
 
-**Population, Objective, and Provenance Verification for Image-Forensics Research**
+<h1 align="center">POP-Forensics</h1>
+<p align="center"><strong>Population, Objective, and Provenance Verification for Image-Forensics Research</strong></p>
+<p align="center">Connect a model-improvement claim to the evidence behind it.</p>
 
-POP helps researchers examine whether a reported model improvement is supported by the evaluation population, realized optimization and prediction inputs. It binds explicit assertions to one registered comparison and produces an inspectable **PASS**, **FAIL** or **UNRESOLVED** receipt.
+<p align="center">
+  <a href="https://github.com/mobashirsifat123/POP-Forensics/releases/tag/v0.1.1"><img alt="Release v0.1.1, experimental prerelease" src="https://img.shields.io/badge/release-v0.1.1%20%28prerelease%29-112c46"></a>
+  <a href="https://github.com/mobashirsifat123/POP-Forensics/actions/workflows/tests.yml"><img alt="CPU tests on main" src="https://github.com/mobashirsifat123/POP-Forensics/actions/workflows/tests.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/mobashirsifat123/POP-Forensics/actions/workflows/tests.yml"><img alt="Tested Python versions: 3.10, 3.12, 3.14" src="https://img.shields.io/badge/Python-3.10%20%7C%203.12%20%7C%203.14-245cbe"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-087f80"></a>
+</p>
+<p align="center">
+  <a href="#installation">Install</a> · <a href="docs/quickstart.md">Documentation</a> · <a href="docs/examples.md">Examples</a> · <a href="docs/citation.md">Paper &amp; citation</a> · <a href="docs/contributing.md#build-this-documentation">Preview the website</a>
+</p>
 
-Small AUC differences can change sign when manipulation types receive different weights. Invalid loss targets can suppress updates, and incomplete feature caches can alter both selection and evaluation. POP makes these evidence requirements explicit before interpreting a score difference.
+## Why POP?
 
-This repository provides a **new reference implementation** of the documented protocol. It is research verification software, not a detection model or a benchmark. It complements experiment trackers and frameworks such as ForensicHub.
+Small AUC gains can change sign under different population weights. Invalid targets can suppress optimizer updates, and incomplete feature caches can alter selection and evaluation. A score difference alone cannot establish a reliable architectural improvement.
 
-## Evidence dimensions
+**POP binds explicit evidence requirements to one registered comparison.** This repository supplies a new, lightweight reference implementation of the protocol. It is verification software, not a detector or benchmark, and complements tools such as ForensicHub and experiment trackers.
 
-| Gate | Questions | Implemented checks |
-|---|---|---|
-| **P1 — Population and estimand** | Which observations and weights define the claim? | Registered row/label/split metadata, disjoint content registries, estimand weights |
-| **O — Objective and realized optimization** | Was the registered training actually realized? | Probability-target bounds/dtype, successful/skipped/nonfinite counters, initialization digests, parameter-change records, optional replicate lineage and attribution |
-| **P2 — Prediction provenance** | Were predictions made from the intended inputs? | Completion record, cache SHA-256, externally reconstructed versus saved predictions |
+## Follow the evidence
 
-```mermaid
-flowchart LR
-    A[Register comparison and tolerances] --> B[Collect producer evidence]
-    B --> P1[Population and estimand]
-    B --> O[Objective and optimization]
-    B --> P2[Prediction provenance]
-    P1 --> R[Evaluate every assertion]
-    O --> R
-    P2 --> R
-    R --> D[FAIL before UNRESOLVED before PASS]
-    D --> E[JSON receipt with hashes and reasons]
-```
+![Three gates: P1 checks population membership, exclusions and weights; O checks targets, realized updates and parameter changes; P2 checks completion, artifact digests and external reconstruction.](docs/assets/diagrams/three-gates.svg)
 
-## Install
+![POP overview: register the comparison, collect evidence, evaluate P1/O/P2, reduce decisions and retain a hashed receipt.](docs/assets/diagrams/overview.svg)
 
-Python 3.10 or newer; CPU only. No runtime dependencies.
+[Methodology](docs/methodology.md) · [P1 guide](docs/gates/population.md) · [O guide](docs/gates/optimization.md) · [P2 guide](docs/gates/provenance.md)
+
+## Decisions with explicit priority
+
+![Contradiction-first decision rule: FAIL if any assertion is contradicted; otherwise UNRESOLVED if evidence is missing or unusable; otherwise PASS if every assertion is satisfied.](docs/assets/diagrams/decisions.svg)
+
+All assertions are evaluated. **FAIL takes priority over missing evidence.** PASS is scoped acceptance of supplied registered evidence; scientific judgment and trustworthy producer instrumentation remain necessary. [Decision rules →](docs/decision_rules.md)
+
+## Installation
+
+Python 3.10+ · CPU only · **No runtime dependencies**
 
 ```sh
 git clone https://github.com/mobashirsifat123/POP-Forensics.git
@@ -41,89 +48,97 @@ source .venv/bin/activate
 python -m pip install .
 ```
 
-The distribution is `pop-forensics`, the Python import is `popverify`, and the command is `popverify`. The package has not been published to PyPI; install from this repository.
+The distribution is `pop-forensics`, the import is `popverify`, and the command is `popverify`. Install from this repository or [release assets](https://github.com/mobashirsifat123/POP-Forensics/releases/tag/v0.1.1); no PyPI publication is claimed.
 
-## Quick start
+## Your first verification
 
-From the repository root, with the environment activated:
-
-```sh
-python examples/synthetic/generate.py output/demo
-popverify validate output/demo/registration.json
-popverify verify output/demo/registration.json output/demo/evidence.json
-popverify verify output/demo/registration.json output/demo/evidence.json --json
-popverify verify output/demo/registration.json output/demo/evidence.json --output output/receipt.json
-```
-
-The generated comparison returns **PASS**. The generator refuses to overwrite an existing directory; choose a new output directory for each run. A ready-to-run package is also committed in [examples/synthetic/package](examples/synthetic/package):
+Run the committed synthetic example:
 
 ```sh
-popverify verify examples/synthetic/package/registration.json examples/synthetic/package/evidence.json
+popverify validate examples/synthetic/package/registration.json
+popverify verify examples/synthetic/package/registration.json \
+  examples/synthetic/package/evidence.json
 ```
 
-Inspect the registration to see the expected membership, weights, update budget and artifact digests. Inspect the receipt to see exactly which assertions were evaluated. [Quickstart](docs/quickstart.md) explains the Python API and failure cases. [Evidence schema](docs/evidence_schema.md) describes every check.
+Selected lines from the **actual CLI transcript** (complete output in [the demonstration](docs/demonstration/pass.txt)):
 
-## Decisions
+<!-- demo:start -->
+```text
+PASS | synthetic feature-count comparison
+  P1 membership: PASS — row membership and registered metadata
+  O baseline-updates: PASS — realized optimizer updates
+  P2 cache: PASS — artifact SHA-256
+```
+<!-- demo:end -->
 
-| Outcome | Meaning | CLI exit code |
+Inspect the [registration](examples/synthetic/package/registration.json) and [evidence](examples/synthetic/package/evidence.json). To generate a fresh package, use `python examples/synthetic/generate.py output/demo` with a new destination. [Full quick start →](docs/quickstart.md)
+
+### See why a decision changes
+
+| Evidence condition | Actual outcome | Generated receipt |
 |---|---|---|
-| PASS | Every registered required assertion is satisfied | 0 |
-| FAIL | At least one assertion is contradicted by evidence, even if other evidence is missing | 1 |
-| UNRESOLVED | No contradiction, but at least one assertion lacks sufficient usable evidence | 2 |
-| Invalid invocation or registration | No scientific decision is issued | 3; argparse syntax errors use 2 |
+| Complete synthetic package | **PASS** | [JSON](docs/demonstration/pass.json) |
+| `baseline-delta` changed to zero | **FAIL** | [JSON](docs/demonstration/fail.json) |
+| Cache-completion observation removed | **UNRESOLVED** | [JSON](docs/demonstration/unresolved.json) |
 
-All assertions in version 1 are required. Missing or malformed evidence is never silently promoted to PASS. The checker evaluates all assertions so a missing file cannot hide a separate contradiction.
+Regenerate all three with `python scripts/generate_demo.py`. This invokes the real CLI and checks exit codes. These are author-designed examples, not independent effectiveness measurements.
 
-## Adapt to your experiment
+<details>
+<summary><strong>Inside an evidence receipt</strong></summary>
 
-1. Freeze arms, selection policy, row/label/split manifests, content exclusions, estimand and tolerances before fitting or inspecting results. Preserve the registration commit externally.
-2. Instrument each arm: record actual post-scaler optimizer calls, skipped/nonfinite counts, target dtype/values, initial parameter digest and parameter changes.
-3. Publish caches atomically, recording completion and digests. Independently rerun predictions from intended inputs using your framework.
-4. Export evidence in the documented JSON schema and run `popverify verify`.
-5. Share the registration, evidence, artifacts, receipt and limitations under suitable permissions.
+![Illustration generated from the real synthetic PASS receipt, showing scope, abbreviated hashes, 17 evaluated assertions and per-gate outcomes.](docs/assets/diagrams/receipt.svg)
 
-See [the SICA/ForensicHub integration guide](examples/sica_forensichub/README.md). This release supplies an export contract, not a plug-in trainer or automatic forensic-model adapter.
+Use `--json` for the complete receipt, or `--output receipt.json` to save it without overwriting an existing file. [Evidence contract →](docs/evidence_schema.md)
 
-## Repository
+</details>
+
+## A small, inspectable architecture
+
+<details>
+<summary><strong>View the module architecture</strong></summary>
+
+![Actual module architecture: CLI, registration validation, local artifact access, verification and semantic checks produce a JSON receipt. AUC metric helpers remain separate.](docs/assets/diagrams/architecture.svg)
+
+</details>
 
 ```text
-src/popverify/          registration, artifact access, checks, decisions, metrics, CLI
-examples/synthetic/    deterministic CPU generator and ready-to-run package
-examples/sica_forensichub/  external integration guide
-configs/               registration guidance
-tests/                 unit, CLI, integration and 16-case conformance coverage
-docs/                  methodology, schema, provenance, limits and release reports
-.github/workflows/     CPU CI across Python versions
+src/popverify/        registration · artifacts · checks · decisions · metrics · CLI
+examples/            synthetic comparison and SICA/ForensicHub export guidance
+docs/                searchable website, gate guides, schemas and research limits
+tests/               unit, CLI, integration and 16-case conformance coverage
+scripts/             reproducible demos, original diagrams and release audit
+.github/workflows/   CPU tests and documentation build
 ```
 
-## Tests
+[Architecture](docs/architecture.md) · [CLI reference](docs/cli.md) · [Python API](docs/api.md) · [Registration](docs/registration_schema.md) · [Integration guide](docs/integration.md)
+
+## Quality and reproducibility
+
+The existing suite covers 12 test methods, including 16 conformance cases: **1 PASS, 10 FAIL and 5 UNRESOLVED**. CPU CI passes on Python 3.10, 3.12 and 3.14. Cases are newly implemented author-designed fixtures, not independent sensitivity estimates.
 
 ```sh
 python -m pip install -e '.[dev]'
 python -m unittest discover -s tests -v
 ruff check .
 ruff format --check .
-python -m build
 ```
 
-The new tests cover a clean case and 15 faults/gaps (1 PASS, 10 FAIL, 5 UNRESOLVED), decision priority, invalid registrations, malformed evidence, local path restrictions, artifact corruption, both-arm coverage, reconstruction tolerances, CLI behavior and AUC estimands. These are newly implemented fixtures inspired by the internal test taxonomy, not independently validated sensitivity estimates. See the [test report](docs/test_report.md).
+[Test report](docs/test_report.md) · [Reproducibility](docs/reproducibility.md) · [Release audit](docs/release_audit.md) · [Documentation build](docs/contributing.md#build-this-documentation)
 
-## Research and reproducibility
+## Research paper
 
-The associated manuscript is *Beyond Headline AUC: Can Reported Improvements in Unified Image Forensics Be Verified? A Retrospective Study of Spatial and Patch Adaptations* (WI-IAT 2026; acceptance reported by the authors). Publication identifiers have not been supplied; no DOI or proceedings link is invented. [CITATION.cff](CITATION.cff) supplies software and manuscript metadata.
+*Beyond Headline AUC: Can Reported Improvements in Unified Image Forensics Be Verified? A Retrospective Study of Spatial and Patch Adaptations.* WI-IAT 2026; acceptance reported by the authors. Proceedings identifiers and a public paper URL have not been supplied.
 
-The **original historical validator, 58-scope validation matrix and 430-record archive catalog were not recovered for independent inspection**. This package does not reconstruct them or independently reproduce the historical outcome counts. It also does not redistribute raw images, historical predictions, private exports, pretrained weights or manuscript assets.
+Use [CITATION.cff](CITATION.cff) for software and manuscript metadata. [Citation guide →](docs/citation.md)
 
-The prior internal NumPy test, historical rescoring receipts and this reference implementation have distinct roles. See [reproducibility](docs/reproducibility.md), [inventory](docs/inventory.md) and [limitations](docs/limitations.md). A PASS is scoped acceptance of supplied evidence, not a guarantee of scientific truth, model superiority or independent protocol effectiveness.
+## Scientific scope
 
-## Documentation
+The **original historical validator, 58-scope validation matrix and 430-record archive catalog remain unavailable for independent inspection**. This new reference implementation does not reconstruct them or independently reproduce historical outcome counts. Synthetic conformance does not establish independent forensic effectiveness.
 
-[Installation](docs/installation.md) · [Quickstart](docs/quickstart.md) · [Methodology](docs/methodology.md) · [Schema](docs/evidence_schema.md) · [Decisions](docs/decision_rules.md) · [Architecture](docs/architecture.md) · [Release audit](docs/release_audit.md)
+No raw images, historical predictions, restricted exports or pretrained weights are bundled. Researchers must produce trustworthy optimization records and externally reconstructed predictions. [All limitations →](docs/limitations.md)
 
 ## License and acknowledgments
 
-New code and documentation in this repository are MIT licensed; see [LICENSE](LICENSE). No upstream implementation is vendored. Dataset, model and external project licenses remain separate.
+New code, documentation and original visual assets are [MIT licensed](LICENSE). No upstream code, branding, prose or assets are copied. External dataset and model terms remain separate.
 
-Engineering references: [ForensicHub](https://github.com/scu-zjz/ForensicHub), [IMDL-BenCo](https://github.com/scu-zjz/IMDLBenCo), [SICA/OpenMMSec](https://github.com/venus-guangjian/SICA_OpenMMSec), and the [existing SICA reproduction repository](https://github.com/mobashirsifat123/Strarting_case_for_ForensicHub_by_SICA). Their modular organization, installation guides, configurations and citation practices informed this project; their code, branding, text and assets were not copied. See [reference review](docs/reference_review.md).
-
-Contributions: open an issue with a minimal synthetic reproduction or a pull request with tests. Avoid uploading restricted datasets or private research exports. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Design and engineering references: [ForensicHub](https://github.com/scu-zjz/ForensicHub), [IMDL-BenCo](https://github.com/scu-zjz/IMDLBenCo), [SICA/OpenMMSec](https://github.com/venus-guangjian/SICA_OpenMMSec) and the [existing SICA reproduction](https://github.com/mobashirsifat123/Strarting_case_for_ForensicHub_by_SICA). [Reference review](docs/reference_review.md) · [Source inventory](docs/inventory.md) · [Contribute](CONTRIBUTING.md)
