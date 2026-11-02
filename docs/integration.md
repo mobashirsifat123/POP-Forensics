@@ -1,0 +1,1 @@
+--8<-- "examples/sica_forensichub/README.md"

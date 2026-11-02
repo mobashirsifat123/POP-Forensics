@@ -1,0 +1,78 @@
+site_name: POP-Forensics
+site_description: Make the evidence inspectable. Population, Objective and Provenance verification for image-forensics research.
+site_url: https://mobashirsifat123.github.io/POP-Forensics/
+repo_url: https://github.com/mobashirsifat123/POP-Forensics
+repo_name: mobashirsifat123/POP-Forensics
+edit_uri: edit/main/docs/
+copyright: POP-Forensics contributors · MIT licensed reference software
+site_dir: site
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  font: false
+  logo: assets/brand/logo.svg
+  favicon: assets/brand/favicon.svg
+  palette:
+    primary: custom
+    accent: custom
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+hooks:
+  - scripts/docs_hooks.py
+plugins:
+  - search
+extra_css:
+  - assets/styles/pop.css
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      check_paths: true
+      base_path: ["."]
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+nav:
+  - Overview: index.md
+  - Get started:
+      - Installation: installation.md
+      - Quick start: quickstart.md
+      - Live CLI example: examples.md
+  - Understand POP:
+      - Methodology: methodology.md
+      - P1 · Population & estimand: gates/population.md
+      - O · Objective & optimization: gates/optimization.md
+      - P2 · Prediction provenance: gates/provenance.md
+      - Decision rules: decision_rules.md
+  - Reference:
+      - Registration schema: registration_schema.md
+      - Evidence schema: evidence_schema.md
+      - CLI: cli.md
+      - Python API: api.md
+      - Software architecture: architecture.md
+  - Integrate & reproduce:
+      - SICA / ForensicHub: integration.md
+      - Reproducibility: reproducibility.md
+      - Limitations: limitations.md
+      - Test report: test_report.md
+  - Project:
+      - Paper & citation: citation.md
+      - Contributing: contributing.md
+      - Source inventory: inventory.md
+      - Reference projects: reference_review.md
+      - Release audit: release_audit.md
+      - Visual design: design_proposal.md
+      - Visual quality report: visual_quality_report.md

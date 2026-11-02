@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="pop-home">
+  <section class="pop-hero" aria-labelledby="make-the-evidence-inspectable">
+    <div class="pop-eyebrow"><span class="pop-rule"></span> RESEARCH VERIFICATION / v0.1.1</div>
+    <div class="pop-hero-layout">
+      <div>
+        <h1 id="make-the-evidence-inspectable">Make the evidence<br><em>inspectable.</em></h1>
+        <p class="pop-lead">A reported improvement is only as useful as the evidence behind it.</p>
+        <p class="pop-intro">POP connects population, realized optimization and prediction provenance to one registered comparison in image-forensics research.</p>
+        <div class="pop-actions">
+          <a class="pop-button" href="{{ 'quickstart/' | url }}">Run your first verification <span aria-hidden="true">↗</span></a>
+          <a class="pop-text-link" href="{{ 'methodology/' | url }}">Read the protocol <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="pop-meta">Python 3.10+ <span>·</span> CPU only <span>·</span> No runtime dependencies</p>
+      </div>
+      <figure class="pop-hero-figure">
+        <svg viewBox="0 0 400 350" role="img" aria-labelledby="chain-title chain-desc">
+          <title id="chain-title">Three evidence paths, one inspectable comparison</title>
+          <desc id="chain-desc">P1, O and P2 paths converge into a receipt containing hashes and assertion outcomes. Schematic overview.</desc>
+          <defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#dce3e8" stroke-width=".6"/></pattern></defs>
+          <rect x="0" y="0" width="400" height="350" fill="url(#grid)"/>
+          <g fill="none" stroke-width="2.5"><path d="M35 70H135V175H225" stroke="#245cbe"/><path d="M35 175H225" stroke="#087f80"/><path d="M35 280H135V175" stroke="#536582"/></g>
+          <g font-family="Arial, sans-serif" font-weight="600" font-size="20"><rect x="15" y="48" width="52" height="44" fill="#f7f8f5"/><text x="26" y="76" fill="#245cbe">P1</text><rect x="15" y="153" width="52" height="44" fill="#f7f8f5"/><text x="30" y="181" fill="#087f80">O</text><rect x="15" y="258" width="52" height="44" fill="#f7f8f5"/><text x="26" y="286" fill="#536582">P2</text></g>
+          <rect x="215" y="112" width="170" height="145" rx="3" fill="#fff" stroke="#112c46" stroke-width="1.5"/>
+          <path d="M234 137H363" stroke="#dce3e8"/><text x="234" y="158" fill="#112c46" font-family="Menlo, monospace" font-size="12">EVIDENCE RECEIPT</text>
+          <g stroke="#c5d2dc" stroke-width="3"><path d="M234 182H362"/><path d="M234 198H333"/><path d="M234 214H348"/></g>
+          <circle cx="234" cy="238" r="3" fill="#087f80"/><text x="245" y="242" fill="#536582" font-family="Menlo, monospace" font-size="10">hashes / assertions</text>
+        </svg>
+        <figcaption>THREE EVIDENCE DIMENSIONS. ONE REGISTERED CLAIM.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="pop-dimensions" aria-labelledby="gates-title">
+    <div class="pop-section-heading"><span class="pop-eyebrow">01 / THE PROTOCOL</span><h2 id="gates-title">Follow the evidence through three gates.</h2></div>
+    <div class="pop-gate-grid">
+      <a href="{{ 'gates/population/' | url }}" class="pop-gate p1"><span class="pop-gate-symbol">P<sub>1</sub></span><h3>Population &amp; estimand</h3><p>Which observations and weights define the claim?</p><span class="pop-gate-detail">Membership · exclusions · weights <b aria-hidden="true">↗</b></span></a>
+      <a href="{{ 'gates/optimization/' | url }}" class="pop-gate objective"><span class="pop-gate-symbol">O</span><h3>Objective &amp; optimization</h3><p>Was the intended training actually realized?</p><span class="pop-gate-detail">Targets · updates · parameter changes <b aria-hidden="true">↗</b></span></a>
+      <a href="{{ 'gates/provenance/' | url }}" class="pop-gate p2"><span class="pop-gate-symbol">P<sub>2</sub></span><h3>Prediction provenance</h3><p>Were predictions made from the intended inputs?</p><span class="pop-gate-detail">Completion · digests · reconstruction <b aria-hidden="true">↗</b></span></a>
+    </div>
+  </section>
+  <section class="pop-demonstration" aria-labelledby="demo-title">
+    <div><span class="pop-eyebrow">02 / RUN IT LOCALLY</span><h2 id="demo-title">From a comparison<br>to a readable receipt.</h2><p>Start with the included synthetic example. Inspect the registration, change the evidence and see why the decision changes.</p><a class="pop-text-link" href="{{ 'examples/' | url }}">Explore all three outcomes <span aria-hidden="true">→</span></a></div>
+    <div class="pop-terminal"><div class="pop-terminal-bar"><span>TERMINAL / SYNTHETIC EXAMPLE</span><span>CPU</span></div><pre><code><span class="pop-prompt">$</span> popverify verify registration.json evidence.json
+
+{{ pop_demo_html | safe }}
+
+<span class="pop-terminal-muted">Selected assertions from the real CLI transcript.</span></code></pre><a href="{{ 'examples/' | url }}">Read the complete generated transcript ↗</a></div>
+  </section>
+  <section class="pop-boundary"><span class="pop-eyebrow">SCIENTIFIC SCOPE</span><p>A new reference implementation of POP. Scoped acceptance of supplied evidence does not establish scientific truth or independent forensic effectiveness. The original historical validator, per-scope matrix and archive catalog remain unavailable.</p><a class="pop-text-link" href="{{ 'limitations/' | url }}">Read the limitations <span aria-hidden="true">→</span></a></section>
+</div>
+{% endblock %}

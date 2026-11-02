@@ -1,0 +1,41 @@
+{
+  "pass": {
+    "outcome": "PASS",
+    "exit_code": 0,
+    "gates": {
+      "P1": "PASS",
+      "O": "PASS",
+      "P2": "PASS"
+    },
+    "inputs": {
+      "registration": "425fa4d943f62fa9409a5110845c1a17d39d0723e156a5dee7813c7388e9dab4",
+      "evidence": "d5ff96bd2feb83bcebe4d2e820b0853d316c103b8ba32dba94afffc35d0a9719"
+    }
+  },
+  "fail": {
+    "outcome": "FAIL",
+    "exit_code": 1,
+    "gates": {
+      "P1": "PASS",
+      "O": "FAIL",
+      "P2": "PASS"
+    },
+    "inputs": {
+      "registration": "425fa4d943f62fa9409a5110845c1a17d39d0723e156a5dee7813c7388e9dab4",
+      "evidence": "f82352190696a63350a4570a65a3ce4c3b1d6c4c429bf26739e36ab4bb8b2853"
+    }
+  },
+  "unresolved": {
+    "outcome": "UNRESOLVED",
+    "exit_code": 2,
+    "gates": {
+      "P1": "PASS",
+      "O": "PASS",
+      "P2": "UNRESOLVED"
+    },
+    "inputs": {
+      "registration": "425fa4d943f62fa9409a5110845c1a17d39d0723e156a5dee7813c7388e9dab4",
+      "evidence": "d6268dd3ad3d90f3f6018ef416c72c45aaceb3143634d8faa55f23156abffd1f"
+    }
+  }
+}

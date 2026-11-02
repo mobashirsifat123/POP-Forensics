@@ -12,7 +12,7 @@ Instrument each arm's post-scaler optimizer calls, skipped/nonfinite losses, tar
 
 Produce caches under a temporary name and atomically replace the final file only after writing completes. Record completion and final digest. Evaluate saved and independently rerun predictions from completed inputs in exactly the same registered row order. Export finite score vectors as JSON for this version's reconstruction check. Keep raw restricted images and private filesystem paths outside public evidence.
 
-Translate those observations into [version-1 records](../../docs/evidence_schema.md) and run:
+Translate those observations into [version-1 records](https://github.com/mobashirsifat123/POP-Forensics/blob/main/docs/evidence_schema.md) and run:
 
 ```sh
 popverify verify your-registration.json your-evidence/evidence.json --json
