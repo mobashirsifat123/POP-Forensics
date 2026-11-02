@@ -3,7 +3,7 @@ site_description: Make the evidence inspectable. Population, Objective and Prove
 site_url: https://mobashirsifat123.github.io/POP-Forensics/
 repo_url: https://github.com/mobashirsifat123/POP-Forensics
 repo_name: mobashirsifat123/POP-Forensics
-edit_uri: edit/visual-documentation-refresh/docs/
+edit_uri: edit/main/docs/
 copyright: POP-Forensics contributors · MIT licensed reference software
 site_dir: site
 theme:

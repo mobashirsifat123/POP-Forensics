@@ -110,7 +110,7 @@ scripts/             reproducible demos, original diagrams and release audit
 .github/workflows/   CPU tests and documentation build
 ```
 
-[Architecture](docs/architecture.md) · [CLI reference](docs/cli.md) · [Python API](docs/api.md) · [Registration](docs/registration_schema.md) · [Integration guide](docs/integration.md)
+[Architecture](docs/architecture.md) · [CLI reference](docs/cli.md) · [Python API](docs/api.md) · [Registration](docs/registration_schema.md) · [Integration guide](examples/sica_forensichub/README.md)
 
 ## Quality and reproducibility
 

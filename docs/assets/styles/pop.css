@@ -108,3 +108,7 @@ html { scroll-padding-top: 5rem; }
 @media(prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 .pop-source { display: flex; gap: .5rem; align-items: center; font-size: .63rem; font-weight: 600; }
 .md-typeset .pop-home .pop-hero-figure figcaption { font-style: normal; }
+@media(max-width: 76.234375em) {
+ .md-nav--primary .md-nav__title[for="__drawer"] { background: #fff; color: var(--pop-ink); }
+ .md-nav--primary .md-nav__source { background: #edf1f3; color: var(--pop-ink); }
+}
